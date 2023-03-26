@@ -6,18 +6,28 @@ def noise():
 
 def re_data():
     return np.round(np.random.uniform(low=1.0, high=50.0, size=(1,288)),2)
-def generate(num):
+
+def label(j):
+    c = np.random.uniform(low=j,high=j,size=(50,1)) 
+    return c
+
+def generate():
     x = re_data()
     a = x 
-
-    for _ in range(1, 51):
+    for _ in range(1, 50):
         a_ = x + noise()
         a = np.concatenate((a,a_),axis=0)
+    return a
 
-    with open('{n}.csv'.format(n=num), 'w',newline='') as f:
+def full_data():
+    tt = np.concatenate((generate(),label(1)), axis=1)
+    for i in range (2, 8):
+        a = generate()
+        b = np.concatenate((a,label(i)), axis=1)
+        tt = np.concatenate((tt,b), axis=0)
+    with open('full.csv', 'w',newline='') as f:
         writer = csv.writer(f,delimiter=',')
-        writer.writerows(a)
+        writer.writerows(tt)
 
 if __name__=="__main__":
-    for i in range(1,8):
-        generate(i)
+    full_data()

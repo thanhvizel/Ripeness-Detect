@@ -2,7 +2,7 @@ import numpy as np
 import csv
 
 def noise():
-    return np.round(np.random.uniform(low=-5.0, high=5.0, size=(1,288)),2)
+    return np.round(np.random.uniform(low=-1.0, high=1.0, size=(1,288)),2)
 
 def re_data():
     return np.round(np.random.uniform(low=1.0, high=50.0, size=(1,288)),2)

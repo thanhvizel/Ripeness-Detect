@@ -14,8 +14,8 @@ y = data[:,288]
 ones = np.ones((X.shape[0],1))
 X_b = np.concatenate((X,ones), axis=1)
 
-mean = 0.00000001
-epochs = 10000
+mean = 0.000001
+epochs = 500000
 
 theta = np.random.uniform(low=-2.0,high=2.0,size=(289,1))
 print(theta.shape)
